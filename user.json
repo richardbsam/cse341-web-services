@@ -1,0 +1,31 @@
+[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "johndoe@example.com",
+      "favoriteColor": "Blue",
+      "birthday": "1990-05-15"
+    },
+    {
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "email": "janesmith@example.com",
+      "favoriteColor": "Green",
+      "birthday": "1985-09-22"
+    },
+    {
+      "firstName": "Alice",
+      "lastName": "Johnson",
+      "email": "alicej@example.com",
+      "favoriteColor": "Red",
+      "birthday": "1992-11-30"
+    },
+    {
+      "firstName": "Bob",
+      "lastName": "Brown",
+      "email": "bobbrown@example.com",
+      "favoriteColor": "Yellow",
+      "birthday": "1988-07-10"
+    }
+  ]
+  
