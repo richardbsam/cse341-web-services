@@ -9,6 +9,13 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 
+// Root route to display "Hello World"
+app.get('/', (req, res) => {
+  res.send('Hello World');
+});
+
+
+// Contacts API routes
 app
   .use(bodyParser.json())
   .use((req, res, next) => {
