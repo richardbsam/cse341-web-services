@@ -1,7 +1,7 @@
 const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
 
-
+// Get all contact
 const getAll = async (req, res) => {
   const result = await mongodb.getDb().db().collection('contacts').find();
   result.toArray().then((contacts) => {
@@ -9,30 +9,9 @@ const getAll = async (req, res) => {
     res.status(200).json(contacts);
   });
 
-};
+}; 
 
-
-// Wrong Code? //
-
-/*
-const getSingle = async (req, res) => {
-  try {
-    const contactId = new ObjectId(req.params.id);
-    const result = await mongodb.getDb().db().collection('contacts').findOne({ _id: contactId });
-
-    if (!contact) {
-      return res.status(404).json({ message: 'Contact not found' });
-    }
-
-    res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(contact);
-  } catch (error) {
-    res.status(500).json({ message: 'Error fetching contact', error });
-  }
-}
-*/
-
-
+// Get single contact
 const getSingle = async (req, res) => {
   try {
     const contactId = new ObjectId(req.params.id);
@@ -52,9 +31,7 @@ const getSingle = async (req, res) => {
   }
 };
 
-
-  //
-//contact part 2
+// Create contact
 const createContacts = async (req, res) => {
   const contact = {
     firstName: req.body.firstName,
@@ -71,6 +48,7 @@ const createContacts = async (req, res) => {
   }
 };
 
+// Update contact
 const updateContacts = async (req, res) => {
   const contactId = new ObjectId(req.params.id);
   const contact = {
@@ -87,7 +65,8 @@ const updateContacts = async (req, res) => {
     res.status(500).json(response.Error || 'some errors occurr while updating contact');
   }
 };
-
+ 
+// Delete contact
 const deleteContacts = async (req, res) => {
   const contactId = new ObjectId(req.params.id);
   const contact = {
@@ -97,7 +76,7 @@ const deleteContacts = async (req, res) => {
     favoriteColor: req.body.favoriteColor,
     birthday: req.body.birthday
   };
-  const result = await mongodb.getDb().db().collection('contacts').remove({ _id: contactId }, true);
+  const result = await mongodb.getDb().db().collection('contacts').deleteOne({ _id: contactId });
   if (response.deletedCount > 0) {
     res.status(204).send();
   } else {
@@ -113,10 +92,6 @@ module.exports = {
   updateContacts,
   deleteContacts
 };
-
-
-
-
 
 
 
