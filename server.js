@@ -18,7 +18,6 @@ const routes = require('./routes/index'); // Import your routes
 
 app.use('/', routes); // Use the routes correctly
 
-
 // Initialize DB and Start Server
 mongodb.initDb((err) => {
   if (err) {
@@ -29,96 +28,3 @@ mongodb.initDb((err) => {
     });
   }
 });
-
-
-
-
-/*
-const express = require('express');
-const bodyParser = require('body-parser');
-const mongodb = require('./db/connect');
-const contactsRoutes = require('./routes/contacts');
-
-const app = express();
-const port = process.env.PORT || 3000;
-
-app.use(bodyParser.json());
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader(
-    'Access-Control-Allow-Methods', 
-    'Origin, X-Requested-With, Content-Type, Accept, Z-Key'
-  );
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  next();
-});
-
-// Root Route
-app.get('/', (req, res) => {
-  res.send('Hello World');
-});
-
-// Corrected Route Import
-app.use('/contacts', contactsRoutes);
-
-
-
-/*
-const express = require('express');
-const bodyParser = require('body-parser');
-const MongoClient = require('mongodb').MongoClient;
-const mongodb = require('./db/connect');
-const contactsRoutes = require('./routes/contacts');
-const app = express();
-
-const port = process.env.PORT || 3000;
-
-// Root route to display "Hello World"
-app.get('/', (req, res) => {
-  res.send('Hello World');
-});
-
-
-// Contacts API routes
-app
-  .use(bodyParser.json())
-  .use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    next();
-  })
-  .use('/contacts', contactsRoutes);
-
-
-mongodb.initDb((err, mongodb) => {
-  if (err) {
-    console.log(err);
-  } else {
-    app.listen(port);
-    console.log(`Connected to Database and listening on ${port}`);
-  }
-});
-
-*/
-
-
-/*
-// Middleware
-app.use(bodyParser.json());
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  next();
-});
-
-*/
-
-
-// app.get('/', (req, res) => {
-  // res.send('Hello World');
-// });
-
-
-
-
-//  app.use('/', require('./routes/contacts'))  //
