@@ -13,15 +13,22 @@ app
   })
   .use('/', require('./routes'));
 
+// Root Route
+const routes = require('./routes/index'); // Import your routes
+
+app.use('/', routes); // Use the routes correctly
+
+
+// Initialize DB and Start Server
 mongodb.initDb((err) => {
   if (err) {
-    console.log(err);
+    console.error('❌ Database connection failed:', err);
   } else {
-    app.listen(port);
-    console.log(`Connected to DB and listening on ${port}`);
+    app.listen(port, () => {
+      console.log(`✅ Connected to Database and listening on port ${port}`);
+    });
   }
 });
-
 
 
 
@@ -53,22 +60,6 @@ app.get('/', (req, res) => {
 
 // Corrected Route Import
 app.use('/contacts', contactsRoutes);
-
-
-// Initialize DB and Start Server
-mongodb.initDb((err) => {
-  if (err) {
-    console.error('❌ Database connection failed:', err);
-  } else {
-    app.listen(port, () => {
-      console.log(`✅ Connected to Database and listening on port ${port}`);
-    });
-  }
-});
-
-*/
-
-
 
 
 
@@ -109,8 +100,6 @@ mongodb.initDb((err, mongodb) => {
 
 */
 
-//  app.use('/', require('./routes/contacts'))  //
-
 
 /*
 // Middleware
@@ -123,3 +112,13 @@ app.use((req, res, next) => {
 });
 
 */
+
+
+// app.get('/', (req, res) => {
+  // res.send('Hello World');
+// });
+
+
+
+
+//  app.use('/', require('./routes/contacts'))  //
