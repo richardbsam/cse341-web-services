@@ -15,6 +15,4 @@ router.delete('/:id', contactsController.deleteContacts);
 
 
 
-
-
 module.exports = router;

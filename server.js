@@ -6,6 +6,19 @@ const contactsRoutes = require('./routes/contacts');
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.use(bodyParser.json());
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader(
+    'Access-Control-Allow-Methods', 
+    'Origin, X-Requested-With, Content-Type, Accept, Z-Key'
+  );
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  next();
+});
+
+
+/*
 // Middleware
 app.use(bodyParser.json());
 app.use((req, res, next) => {
@@ -15,6 +28,9 @@ app.use((req, res, next) => {
   next();
 });
 
+*/
+
+
 // Root Route
 app.get('/', (req, res) => {
   res.send('Hello World');
@@ -22,6 +38,7 @@ app.get('/', (req, res) => {
 
 // Corrected Route Import
 app.use('/contacts', contactsRoutes);
+
 
 // Initialize DB and Start Server
 mongodb.initDb((err) => {
@@ -77,3 +94,8 @@ mongodb.initDb((err, mongodb) => {
 
 
 */
+
+
+
+
+//  app.use('/', require('./routes/contacts'))  //
