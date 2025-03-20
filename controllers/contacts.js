@@ -3,6 +3,7 @@ const ObjectId = require('mongodb').ObjectId;
 
 // Get all contact
 const getAll = async (req, res) => {
+  //#swagger.tags=['contacts']
   const result = await mongodb.getDb().db().collection('contacts').find();
   result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
@@ -72,6 +73,7 @@ const updateContact = async (req, res) => {
 
 // Delete contact
 const deleteContact = async (req, res) => {
+  //#swagger.tags=['contacts']
   try {
     if (!ObjectId.isValid(req.params.id)) {
       return res.status(400).json({ message: 'Invalid contact ID format' });
