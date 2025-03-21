@@ -5,10 +5,10 @@
     "description": "Contact API",
     "version": "1.0.0"
   },
-  "host":"https://cse341-web-services-lzw1.onrender.com",
+  "host":"cse341-web-services-lzw1.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/": {
